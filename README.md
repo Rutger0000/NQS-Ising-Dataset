@@ -11,15 +11,19 @@ described in
 
 There are many different conventions for the Ising model/QUBO representation. Here, we
 use the following Hamiltonian for the Ising model:
+
 $$
 H(s) = - \sum_{i=1,j=1}^{n+\alpha n} J_{ij} s_i s_j - \sum_{i=1}^{n+\alpha n} h_i s_i
 $$
+
 where `s_i` are spin variables taking values in {-1, 1}, $J_{ij}$ (`J`)
  is the connectivity matrix, and $h_i$ (`h`) is the bias vector. $n$ is the number of spins in the original quantum system and the number of visible spins of the RBM. $\alpha$ is the hidden unit density
 of the RBM, defined as the ratio of the number of hidden units to the number of visible units. The probability of a spin configuration `s` is given by the Boltzmann distribution:
+
 $$
 P(s) = \frac{1}{Z} e^{-H(s)}
 $$
+
 where `Z` is the partition function.
 
 The connectivity matrix `J` and bias vector `h` can be found in the `weights/`
