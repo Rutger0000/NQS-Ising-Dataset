@@ -60,7 +60,7 @@ calculate the `H(s)` (Energy of Ising Model) and the quantum energy $\langle E
 to earlier experiments which are stored in
 `data/observables_{nspins}_{alpha}.parquet`. 
 
-To load other samples and test their accuracy, use `benchmark.py` and modify lines 38/39:
+To load other samples and test their accuracy, use `benchmark.ipynb` and modify lines 38/39:
 
 ```python
 df_raw_states = pd.read_parquet(f'data/states_{n_visible_spins}_{alpha}.parquet') # THIS IS AN EXAMPLE FILE, REPLACE WITH YOUR OWN DATA
