@@ -1,7 +1,7 @@
 import numpy as np
 
 def boltzmann_energy(w, th, s) -> float:
-    return -((s.T @ (w @ s)) + s@th)
+    return -((s @ (w @ s.T)) + s@th)
 
 def main():
 

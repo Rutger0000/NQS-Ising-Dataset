@@ -5,7 +5,7 @@ from numba import njit
 import os
 import json
 
-@njit 
+
 def boltzmann_energy(J, h, s) -> float:
     """
     Calculates the Boltzmann energy of a given state s for a Boltzmann machine/Ising model defined by the connectivity matrix J and field vector h. The energy is calculated using the formula E(s) = -((s.T @ (J @ s)) + s@h), where s is the state vector, J is the connectivity matrix, and h is the field vector.
@@ -118,10 +118,15 @@ def local_energies(states, w_rbm, b_rbm, bonds):
     
     return e_local(rbm_wavefunction, psi_logs, states, bonds) / (nspins * 4)
 
-def evaluate(n_visible_spins, alpha, states, J, h, bonds):
+def evaluate(n_visible_spins, alpha, states, J, h, bonds = None):
     n_visible_spins = n_visible_spins
     n_hidden_spins = alpha * n_visible_spins
     n_total_spins = n_visible_spins + n_hidden_spins
+
+    if bonds is None:
+        bonds = load_bonds(n_visible_spins)
+
+    states = states.astype(np.float64)
 
     assert states.shape[1] == n_total_spins, f"Expected states to have shape (batch, {n_total_spins}), but got {states.shape}"
     assert J.shape == (n_total_spins, n_total_spins), f"Expected J to have shape ({n_total_spins}, {n_total_spins}), but got {J.shape}"
