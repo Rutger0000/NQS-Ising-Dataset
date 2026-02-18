@@ -3,7 +3,9 @@ name = "nqs-ising-dataset"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = [
-    "numpy>=2.4.1",
+    "matplotlib>=3.10.8",
+    "numba>=0.63.1",
+    "numpy>=2.2.6",
 ]
