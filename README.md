@@ -52,3 +52,18 @@ H(s) =  -93.41480334399733
 s = [-1  1 -1  1  1 -1  1 -1 -1  1 -1  1  1 -1  1 -1  1 -1  1 -1 -1  1 -1  1  1 -1  1 -1 -1  1 -1 -1  1 -1  1 -1 -1  1 -1  1  1 -1  1 -1 -1  1 -1  1]
 H(s) =  -98.96928063623803
 ```
+
+## How to test the accuracy of sampled configurations
+To test the accuracy, `benchmark.py` can be used to load the sampled states and
+calculate the `H(s)` (Energy of Ising Model) and the quantum energy $\langle E
+\rangle$. The energy of the Ising model and the quantum energy are then compared
+to earlier experiments which are stored in
+`data/observables_{nspins}_{alpha}.parquet`. 
+
+To load other samples and test their accuracy, use `benchmark.py` and modify lines 38/39:
+
+```python
+df_raw_states = pd.read_parquet(f'data/states_{n_visible_spins}_{alpha}.parquet') # THIS IS AN EXAMPLE FILE, REPLACE WITH YOUR OWN DATA
+raw_states = df_raw_states.values[:4000, :total_spins]
+```
+
