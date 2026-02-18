@@ -152,11 +152,14 @@ def evaluate(n_visible_spins, alpha, states, J, h, bonds = None):
 
     # Calculate the total spin for the visible part of the state
     sum_visible_spins = np.sum(visible, axis=1)
+    print(f"Percentage of states with zero magnetization: {100*np.sum(sum_visible_spins==0)/len(sum_visible_spins):.2f}%")
+    print("We will only consider the states with zero magnetization for the variational energy, as these are the ones that are relevant for the ground state of the system.")
+    print("Percentage of states with zero magnetization is typically around 10-50%.")
 
     # Calculate average variational energy over the states with magnetization zero (sum of visible spins is zero)
     variational_energy = np.mean(quantum_energies[sum_visible_spins==0])
-    print(f"Variational energy for alpha={alpha} and nspins={n_visible_spins}: {variational_energy}")
+    print(f"Quantum energy for alpha={alpha} and nspins={n_visible_spins}: {variational_energy}")
     variational_energy_sem = np.std(quantum_energies[sum_visible_spins==0])/np.sqrt(len(quantum_energies[sum_visible_spins==0]))
-    print(f"Standard error of the mean for the variational energy: {variational_energy_sem}")
+    print(f"Standard error of the mean for the Quantum energy: {variational_energy_sem}")
 
     return boltzmann_energies, quantum_energies, log_psi, sum_visible_spins, variational_energy, variational_energy_sem

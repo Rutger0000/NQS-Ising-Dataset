@@ -54,7 +54,7 @@ H(s) =  -98.96928063623803
 ```
 
 ## How to test the accuracy of sampled configurations
-To test the accuracy, `benchmark.py` can be used to load the sampled states and
+To test the accuracy, `benchmark.ipynb` can be used to load the sampled states and
 calculate the `H(s)` (Energy of Ising Model) and the quantum energy $\langle E
 \rangle$. The energy of the Ising model and the quantum energy are then compared
 to earlier experiments which are stored in
